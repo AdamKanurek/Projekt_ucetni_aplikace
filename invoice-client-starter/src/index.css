@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 
+  Set full height and reset margin for html, body, and root container.
+*/
+html,
+body,
+#root {
+	min-height: 100%;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	background-color: #e7e7e7;
+	color: #333;
+}
+
+/* 
+  Main app wrapper uses flexbox layout to arrange content vertically.
+*/
+.app-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* 
+  The main content area should grow to fill available vertical space,
+  with some padding around content 
+*/
+main {
+	flex: 1;
+	padding: 1.5rem 1rem;
+}
+
+/* Navbar styles */
+.navbar {
+	background-color: #007bff;
+}
+
+.navbar .nav-link {
+	color: #333;
+	font-weight: 600;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+	color: #007bff;
+	text-decoration: none;
+}
+
+/* Buttons - success style */
+.btn-success {
+	background-color: #28a745;
+	border-color: #28a745;
+	font-weight: 600;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+	background-color: #218838;
+	border-color: #1e7e34;
+}
+
+/* Table with borders */
+.table-bordered tbody tr:hover {
+	background-color: #e9f5ff;
+}
+
+/* Custom link styles */
+.custom-link {
+	text-decoration: none;
+	color: #333;
+}
+
+.custom-link:hover,
+.custom-link:focus {
+	color: #007bff;
+}
