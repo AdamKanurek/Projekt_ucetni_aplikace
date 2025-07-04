@@ -6,14 +6,12 @@ import cz.itnetwork.service.exceptions.DuplicateInvoiceNumberException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.webjars.NotFoundException;
 
@@ -23,16 +21,34 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // TO DO: Dopsat dokumentaci
-
+    /**
+     * Handles DuplicateEmailException by returning a BAD_REQUEST response with a relevant error message.
+     *
+     * @param request the HTTP servlet request
+     * @return ResponseEntity containing the error details
+     */
     @ExceptionHandler({DuplicateEmailException.class})
         public ResponseEntity<Map <String, Object>> handleDuplicateEmailException(HttpServletRequest request) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, "Zadaný email již v databázi existuje.", request);
     }
+
+    /**
+     * Handles DuplicateIdentificationNumberException by returning a BAD_REQUEST response with a relevant error message.
+     *
+     * @param request the HTTP servlet request
+     * @return ResponseEntity containing the error details
+     */
     @ExceptionHandler({DuplicateIdentificationNumberException.class})
     public ResponseEntity<Map <String, Object>> handleDuplicateIdentificationNumberException(HttpServletRequest request) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, "Zadané IČO již v databázi existuje.", request);
     }
+
+    /**
+     * Handles DuplicateInvoiceNumberException by returning a BAD_REQUEST response with a relevant error message.
+     *
+     * @param request the HTTP servlet request
+     * @return ResponseEntity containing the error details
+     */
     @ExceptionHandler({DuplicateInvoiceNumberException.class})
     public ResponseEntity<Map <String, Object>> handleDuplicateInvoiceNumberException(HttpServletRequest request) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, "Zadané číslo faktury již v databázi existuje.", request);
